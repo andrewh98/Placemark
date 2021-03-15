@@ -25,11 +25,14 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
             placemark.description = placemarkDescription.text.toString()
             if (placemark.title.isNotEmpty()) {
                 app.placemarks.add(placemark.copy())
-                info("add Button Pressed: $placemarkTitle")
-                app.placemarks.forEach { info("add Button Pressed: ${it.title}, ${it.description}")}
-            }
-            else {
-                toast ("Please Enter a title")
+                info("add Button Pressed: ${placemark}")
+                for (i in app.placemarks.indices) {
+                    info("Placemark[$i]:${app.placemarks[i]}")
+                }
+                setResult(AppCompatActivity.RESULT_OK)
+                finish()
+            } else {
+                toast("Please Enter a title")
             }
         }
     }
